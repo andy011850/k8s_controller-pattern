@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-hub
+  labels:
+    app: selenium-hub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenium-hub
+  template:
+    metadata:
+      labels:
+        app: selenium-hub
+    spec:
+      nodeSelector:
+        seleniumRole: hub
+      containers:
+      - name: selenium-hub
+        # image: mellinchou1/selenium-hub:1.5-newqueue-health
+        image: selenium/hub:latest
+        ports:
+          - containerPort: 4442
+          - containerPort: 4443
+          - containerPort: 4444
+        env:
+          - name: SE_OPTS
+            value: "--healthcheck-interval 10"
+          #   value: "--registration-secret parrot"
+          - name: SE_SESSION_REQUEST_TIMEOUT
+            value: "180"
+          - name: SE_SESSION_RETRY_INTERVAL
+            value: "0"  
+        # resources:
+        #   limits:
+        #     memory: "2600Mi"
+        #     cpu: "2.0"
+        #   requests:
+        #     cpu: ".01"
+        #     memory: "400Mi"
+        # livenessProbe:
+        #   httpGet:
+        #     path: /status
+        #     port: 4444
+        #   initialDelaySeconds: 30
+        #   timeoutSeconds: 30
+        # readinessProbe:
+        #   httpGet:
+        #     path: /status
+        #     port: 4444
+        #   initialDelaySeconds: 30
+        #   timeoutSeconds: 30
