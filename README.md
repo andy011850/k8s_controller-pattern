@@ -1,9 +1,27 @@
-kubectl create -f hub.yaml
+## To deploy and monitor selenium hub-node on minikube
+```bash
 
-minikube dashboard
+$ kubectl create -f hub.yaml
 
-minikube service selenium-hub-deployment --url
+$ minikube dashboard
+# open the url
 
-kubectl create -f node-chrome.yaml
+$ minikube service selenium-hub-deployment --url
+# open the third url and copy it to testcase.py command_executor
+
+$ kubectl create -f node-chrome.yaml
+
+```
+
+### To test the images with docker compose
+```bash
+$ docker compose up
+
+# docker compose down
+```
 
 p.s. these image for arm64 only.
+
+***
+
+Reference: https://sahajamit.medium.com/spinning-up-your-own-auto-scalable-selenium-grid-in-kubernetes-part-2-15b11f228ed8
