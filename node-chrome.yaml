@@ -21,7 +21,7 @@ spec:
           medium: Memory
       containers:
         - name: selenium-node-chrome
-          image: selenium/node-chrome:latest
+          image: seleniarm/node-chromium:latest
           env:
             - name: SE_EVENT_BUS_HOST
               value: "selenium-hub"
@@ -31,8 +31,8 @@ spec:
               value: "4442"
             - name: SE_NODE_SESSION_TIMEOUT
               value: "300"
-            - name: SE_OPTS
-              value: "--drain-after-session-count 1"
+            #- name: SE_OPTS
+            #  value: "--drain-after-session-count 1"
           ports:
           - containerPort: 5555
             protocol: TCP

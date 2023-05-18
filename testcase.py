@@ -4,7 +4,7 @@ import unittest
 
 # driver的來源
 driver = webdriver.Remote(
-        command_executor='http://localhost:58427',
+        command_executor='http://localhost:54635',
      desired_capabilities={
           "browserName": "chrome",
           "platformName": "LINUX"
