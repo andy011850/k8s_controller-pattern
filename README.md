@@ -1,15 +1,15 @@
 ## To deploy and monitor selenium hub-node on minikube
 ```bash
 
-$ kubectl create -f hub.yaml
+$ kubectl create -f hub-deployment.yaml
 
 $ minikube dashboard
 # open the url
 
-$ minikube service selenium-hub-deployment --url
+$ minikube service selenium-hub --url
 # open the third url and copy it to testcase.py command_executor
 
-$ kubectl create -f node-chrome.yaml
+$ kubectl create -f node-chrome-xxx.yaml
 
 ```
 
