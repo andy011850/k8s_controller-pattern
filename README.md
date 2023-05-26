@@ -1,15 +1,24 @@
-## To deploy and monitor selenium hub-node on minikube
+## To deploy and monitor selenium grid on minikube
 ```bash
+
+$ minikube dashboard
+# Open the URL and monitor the cluster
 
 $ kubectl create -f hub-deployment.yaml
 
-$ minikube dashboard
-# open the url
-
 $ minikube service selenium-hub --url
-# open the third url and copy it to testcase.py command_executor
+# Open the last URL and copy it to `testcase.py` under the `command_executor` section.
 
-$ kubectl create -f node-chrome-xxx.yaml
+$ kubectl create -f node-chrome-job.yaml
+
+$ kubectl create -f controller.yaml
+
+$ kubectl create -f role-controller.yaml
+
+$ python testcase.py
+# Execute the testcase
+$ ./script.sh 5
+# Ensure that the shell script is executable. Specify the number of test cases you wish to execute, for example, "5"
 
 ```
 
@@ -20,8 +29,4 @@ $ docker compose up
 # docker compose down
 ```
 
-p.s. these image for arm64 only.
-
-***
-
-Reference: https://sahajamit.medium.com/spinning-up-your-own-auto-scalable-selenium-grid-in-kubernetes-part-2-15b11f228ed8
+### Please note that these images are intended for arm64 architecture only.

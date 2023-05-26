@@ -1,22 +1,32 @@
 from tkinter import BROWSE
 from selenium import webdriver
 import unittest
+import time
+from selenium.webdriver.common.keys import Keys
 
-# driver的來源
-driver = webdriver.Remote(
-     command_executor='http://localhost:54635',
-     desired_capabilities={
-          "browserName": "chrome",
-          "platformName": "LINUX"
-          }
-)
 
-# 執行測試(判斷title)
 class selenium_grid (unittest.TestCase):
+     def setUp(self):
+          self.driver = webdriver.Remote(
+               command_executor='http://localhost:63971',
+               desired_capabilities={
+                    "browserName": "chrome",
+                    "platformName": "LINUX"
+                    }
+          )
+
+     def tearDown(self):
+          self.driver.quit()
+     
      def test(self):
+          driver = self.driver
           driver.get("https://www.google.com/")
-          self.assertEqual('Google', driver.title, 'webpage title are not same')
-          driver.quit()
+          time.sleep(5)
+          search_box = driver.find_element("name", "q")
+          search_box.send_keys("NCKU CSIE")
+          search_box.send_keys(Keys.RETURN)
+          time.sleep(5)
+          self.assertEqual("NCKU CSIE - Google 搜尋", driver.title, "webpage title is not the expected")
 
 if __name__ == "__main__":
      unittest.main()

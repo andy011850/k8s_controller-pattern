@@ -29,6 +29,13 @@ spec:
               value: "300"
             - name: SE_OPTS
               value: "--drain-after-session-count 1"
+          resources:
+            limits:
+              memory: "1600Mi"
+              cpu: "2"
+            requests:
+              cpu: ".01"
+              memory: "400Mi"
           ports:
           - containerPort: 5555
             protocol: TCP
@@ -38,5 +45,5 @@ spec:
             - name: dshm
               mountPath: /dev/shm
       restartPolicy: Never
-  completions: 1
-  parallelism: 10
+  completions: 1000
+  parallelism: 0

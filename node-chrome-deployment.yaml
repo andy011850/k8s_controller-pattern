@@ -31,8 +31,6 @@ spec:
               value: "4442"
             - name: SE_NODE_SESSION_TIMEOUT
               value: "300"
-            #- name: SE_OPTS
-            #  value: "--drain-after-session-count 1"
           ports:
           - containerPort: 5555
             protocol: TCP
