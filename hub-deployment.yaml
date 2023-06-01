@@ -41,6 +41,7 @@ spec:
       labels:
         app: selenium-hub
     spec:
+      serviceAccountName: event-generator-serviceaccount
       containers:
         - name: selenium-hub
           image: seleniarm/hub:latest
@@ -53,3 +54,7 @@ spec:
               value: "180"
             - name: SE_SESSION_RETRY_INTERVAL
               value: "0"
+        - name: event-generator
+          image: andy011850/event-generator:latest
+          imagePullPolicy: Always
+          command: ["python", "event-generator.py"]

@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: job-scaler
+  name: controller
   labels:
-    app: job-scaler
+    app: controller
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: job-scaler
+      app: controller
   template:
     metadata:
       labels:
-        app: job-scaler
+        app: controller
     spec:
-      serviceAccountName: job-controller
+      serviceAccountName: controller-serviceaccount
       containers:
-      - name: job-scaler
-        image: andy011850/job-scaler:latest
+      - name: controller
+        image: andy011850/controller:latest
         imagePullPolicy: Always
-        command: ["python", "job-scaler.py"]
+        command: ["python", "controller.py"]

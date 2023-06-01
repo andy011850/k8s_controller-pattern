@@ -2,8 +2,8 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY job-scaler.py /app
+COPY controller.py /app
 
 RUN pip install kubernetes
 
-CMD ["python", "job-scaler.py"]
+CMD ["python", "controller.py"]
