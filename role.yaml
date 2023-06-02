@@ -12,6 +12,9 @@ rules:
   resources: ["jobs"]
   verbs: ["get", "patch"]
 - apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list"]
+- apiGroups: [""]
   resources: ["events"]
   verbs: ["*"]
 ---

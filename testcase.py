@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 class selenium_grid (unittest.TestCase):
      def setUp(self):
           self.driver = webdriver.Remote(
-               command_executor='http://localhost:51813',
+               command_executor='http://localhost:60820',
                desired_capabilities={
                     "browserName": "chrome",
                     "platformName": "LINUX"

@@ -41,7 +41,7 @@ spec:
       labels:
         app: selenium-hub
     spec:
-      serviceAccountName: event-generator-serviceaccount
+      serviceAccountName: controller-serviceaccount
       containers:
         - name: selenium-hub
           image: seleniarm/hub:latest
