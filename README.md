@@ -4,16 +4,16 @@
 $ minikube dashboard
 # Open the URL and monitor the cluster
 
+$ kubectl create -f node-chrome-job.yaml
+
+$ kubectl create -f role.yaml
+
 $ kubectl create -f hub-deployment.yaml
 
 $ minikube service selenium-hub --url
 # Open the last URL and copy it to `testcase.py` under the `command_executor` section.
 
-$ kubectl create -f node-chrome-job.yaml
-
 $ kubectl create -f controller.yaml
-
-$ kubectl create -f role-controller.yaml
 
 $ python testcase.py
 # Execute the testcase
