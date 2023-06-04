@@ -17,7 +17,7 @@ $ kubectl create -f controller.yaml
 
 $ python testcase.py
 # Execute the testcase
-$ ./script.sh 5
+$ ./script.sh 10
 # Ensure that the shell script is executable. Specify the number of test cases you wish to execute, for example, "5"
 
 ```
